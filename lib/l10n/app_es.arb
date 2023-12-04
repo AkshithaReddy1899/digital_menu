@@ -1,0 +1,19 @@
+{
+    "logo": "Ruchulu",
+    "address": "2824 Gaylord Turnpike, Hyderabad, Telangana, 500043",
+    "past_orders": "Pedidos anteriores",
+    "view_past_orders": "Ver pedidos anteriores",
+    "app_setting": "Ajustes de Aplicacion",
+    "change_lan" : "Cambiar idioma",
+    "change_them": "Cambiar de tema",
+    "contact": "Soporte de contacto",
+    "home": "Hogar",
+    "menu": "Menú",
+    "profile": "Perfil",
+    "pick": "Elige un idioma",
+    "en": "Inglesa",
+    "es": "Spanish",
+    "ar": "Arabic",
+    "te" : "Telugu",
+    "hi": "Hindi"
+}

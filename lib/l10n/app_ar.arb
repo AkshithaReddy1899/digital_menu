@@ -1,0 +1,19 @@
+{
+    "logo": "روشولو",
+    "address": "روشولو روشولوروشولوروشولو",
+    "past_orders": "الطلبات السابقة",
+    "view_past_orders": "عرض الطلبات السابقة",
+    "app_setting": "إعدادات التطبيقات",
+    "change_lan" : "تغيير اللغة",
+    "change_them": "غير الخلفية",
+    "contact": "اتصل بالدعم",
+    "home": "بيت",
+    "menu": "قائمة طعام",
+    "profile": "روشولو",
+    "pick": "اختر لغة",
+    "en": "إنجليزي",
+    "es": "Spanish",
+    "ar": "Arabic",
+    "te" : "Telugu",
+    "hi": "Hindi"
+}

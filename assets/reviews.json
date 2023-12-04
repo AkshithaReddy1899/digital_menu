@@ -1,0 +1,17 @@
+{
+    "reviews" : [
+        {
+            "text": "This cozy restaurant has left the best impressions! Hospitable hosts, delicious dished, beautiful presentation, wonderful dessert. I recommend to everyone!",
+            "stars" : 4
+        },
+        {
+            "text": "First time in Ruchulu and YOU have to go! It's the cutest little spot with amazing food. The service we received was so amazing and we will definitely be back again.",
+            "stars" : 5
+        },
+        {
+            "text": "It's a great experience. The ambiance is very welcoming and charming. Amazing wines, food and service. Staff are extremely knowledgeable and make great recommendations",
+            "stars": 5
+        }
+    ]
+  }
+  
