@@ -3,8 +3,8 @@ import 'package:digital_menu/controller/riverpod_management.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../common/fancy_switch.dart';
-import '../Components/bottom_nav_bar.dart';
+import '../../common/components/fancy_switch.dart';
+import '../../common/components/bottom_nav_bar.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});

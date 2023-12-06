@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:digital_menu/mobile/screens/category.dart';
+import 'package:digital_menu/views/mobile_screens/category.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
-import '../../common/menu.dart';
+import '../../common/components/menu.dart';
 import '../../common/app_constants.dart';
 import '../../model/response_model.dart';
 import '../../controller/riverpod_management.dart';

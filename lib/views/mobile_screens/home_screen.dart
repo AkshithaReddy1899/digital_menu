@@ -1,6 +1,6 @@
 import 'package:countup/countup.dart';
-import 'package:digital_menu/mobile/screens/category.dart';
-import 'package:digital_menu/mobile/screens/contact_support.dart';
+import 'package:digital_menu/views/mobile_screens/category.dart';
+import 'package:digital_menu/views/mobile_screens/contact_support.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -53,6 +53,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
     if (response.object != null) {
       orders = response.object!.orders!;
+      print(orders);
     }
     // print(response.object!.toJson());
 
@@ -69,6 +70,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
       setState(() {
         if (response.object != null) {
           orders = response.object!.orders!;
+        }
+
+        for (var i = 0; i < orders.length; i++) {
+          print(orders[i].toJson());
+        }
+
+        print('@@@@@@@@@@@@@@@');
+
+        for (var i = 0; i < pendingOrders.length; i++) {
+          print(pendingOrders[i].toJson());
         }
 
         pendingOrders = pendingOrders;
@@ -346,17 +357,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                                           ? ListView.builder(
                                               itemCount: pendingOrders.length,
                                               itemBuilder: (context, index) {
-                                                return
-                                                    //loading == true
-                                                    //     ? AppConstant()
-                                                    //         .loading(screenSize)
-                                                    // :
-                                                    AppConstant().ordersItem(
-                                                        context,
-                                                        pendingOrders,
-                                                        index,
-                                                        themeProvider.darkMode,
-                                                        "Placed", () async {
+                                                return AppConstant().ordersItem(
+                                                    context,
+                                                    pendingOrders,
+                                                    index,
+                                                    themeProvider.darkMode,
+                                                    "Placed", () async {
                                                   Param obj = Param(
                                                     id: pendingOrders[index].id,
                                                     ordersId:

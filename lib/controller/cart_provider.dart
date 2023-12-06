@@ -10,14 +10,12 @@ class CartProvider extends ChangeNotifier {
 
   void addItemToCart(item) {
     final index = cartItems.indexWhere((element) => element.id == item.id);
-    print('index');
     if (index >= 0) {
       cartItems[index].quantity = cartItems[index].quantity! + 1;
     } else {
       cartItems.add(item);
     }
     getTotalAmount();
-    print(cartItems);
     notifyListeners();
   }
 

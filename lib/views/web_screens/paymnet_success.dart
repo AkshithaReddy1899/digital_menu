@@ -1,4 +1,3 @@
-import 'package:digital_menu/views/web_screens/web_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -68,7 +67,7 @@ class _PaymentSuccessState extends ConsumerState<PaymentSuccess> {
                     SizedBox(
                       height: screenSize.height / 30
                     ),
-                    Container(
+                    SizedBox(
                       width: screenSize.width / 1.2,
                       child: AppConstant()
                           .elevatedButton(themeProvider.darkMode, () {

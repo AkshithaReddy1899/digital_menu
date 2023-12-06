@@ -1,11 +1,11 @@
 import 'package:digital_menu/views/mobile_screens/home_screen.dart';
-import 'package:digital_menu/mobile/screens/menu_screen.dart';
-import 'package:digital_menu/mobile/screens/profile_screen.dart';
+import 'package:digital_menu/views/mobile_screens/menu_screen.dart';
+import 'package:digital_menu/views/mobile_screens/profile_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../common/app_constants.dart';
+import '../app_constants.dart';
 import '../../controller/riverpod_management.dart';
 import '../../views/web_screens/cart_screen.dart';
 import '../../views/web_screens/web_home.dart';

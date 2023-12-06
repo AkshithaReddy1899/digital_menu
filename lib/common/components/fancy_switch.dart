@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../controller/riverpod_management.dart';
+import '../../controller/riverpod_management.dart';
 
 class FancySwitch extends ConsumerStatefulWidget {
   final bool value;

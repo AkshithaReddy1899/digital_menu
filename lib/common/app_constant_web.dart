@@ -5,7 +5,7 @@ import '../views/web_screens/cart_screen.dart';
 import '../views/web_screens/web_home.dart';
 import '../views/web_screens/web_menu.dart';
 import 'app_constants.dart';
-import 'fancy_switch.dart';
+import 'components/fancy_switch.dart';
 
 class WebConstants {
   webButton(label, onPressed, isDark) {

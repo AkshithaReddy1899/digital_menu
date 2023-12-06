@@ -1,10 +1,10 @@
-import 'package:digital_menu/mobile/screens/change_language.dart';
+import 'package:digital_menu/views/mobile_screens/change_language.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../common/app_constants.dart';
-import '../../common/fancy_switch.dart';
+import '../../common/components/fancy_switch.dart';
 import '../../controller/riverpod_management.dart';
 import 'contact_support.dart';
 import 'past_orders.dart';

@@ -7,9 +7,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 
-import '../controller/riverpod_management.dart';
-import 'app_constants.dart';
-import '../model/response_model.dart';
+import '../../controller/riverpod_management.dart';
+import '../app_constants.dart';
+import '../../model/response_model.dart';
 
 class MenuCard extends ConsumerStatefulWidget {
   const MenuCard({super.key});
@@ -37,7 +37,6 @@ class _MenuCardState extends ConsumerState<MenuCard> {
   }
 
   fetchData() async {
-    print('loading!');
     if (mounted) {
       setState(() {
         loading = true;
@@ -110,9 +109,7 @@ class _MenuCardState extends ConsumerState<MenuCard> {
 
   addToCart(isDark, Param item) {
     item.quantity = 1;
-    print('add to cart');
     final cartProvider = ref.watch(cartRiverpod);
-    // final cartProvider = Provider.of<CartProvider>(context, listen: false);
     cartProvider.addItemToCart(item);
     cartProvider.getTotalAmount();
     SnackBar snackBar =

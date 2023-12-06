@@ -562,28 +562,21 @@ class AppConstant {
     }
   }
 
-  orderUpdate(context, bisUpdate, obj) async {
-    print('HAHA');
-    Response response = bisUpdate
-        ? await put(
+  orderUpdate(context, bisUpdate, Param obj) async {
+    Response response =  await put(
             Uri.parse(
-              "https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order"),
-            headers: {"content-type": "application/json"},
-            body: jsonEncode(obj),
-          )
-        : await delete(
-            Uri.parse(
-                "https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order"),
+              "https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order/${obj.ordersId}"),
             headers: {"content-type": "application/json"},
             body: jsonEncode(obj),
           );
 
-    print(jsonDecode(response.body));
+    print("https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order${obj.ordersId}");
+    print(obj.toJson());
 
     if (response.statusCode != 200) {
       SnackBar snackBar = SnackBar(
           content: Text(
-              'There was an error while ${bisUpdate ? "changing the order status " : "rejecting "} the order item, please try again later'));
+              'There was an error while changing the order status , please try again later'));
       if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     } else {
@@ -594,20 +587,13 @@ class AppConstant {
 
   Future getAll(url) async {
     Response response = await get(Uri.parse(url));
-    print(response.body);
     if (response.statusCode == 200) {
       ResponseModel getResponse =
           ResponseModel.fromJson(jsonDecode(response.body));
-          print('@@@');
-          print(url);
-          print(getResponse.toJson());
-          print(getResponse);
       return getResponse;
     } else {
       ResponseModel response =
           ResponseModel(message: 'Error fetching the categories');
-          print('@@');
-          print(response);
       return response;
     }
   }

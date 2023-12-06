@@ -9,8 +9,8 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'common/app_constants.dart';
 import 'controller/riverpod_management.dart';
-import 'mobile/Components/bottom_nav_bar.dart';
-import 'mobile/screens/login_screen.dart';
+import 'common/components/bottom_nav_bar.dart';
+import 'views/mobile_screens/login_screen.dart';
 
 void main() {
   if (kIsWeb) {

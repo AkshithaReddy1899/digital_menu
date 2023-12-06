@@ -2,8 +2,6 @@ import 'package:digital_menu/common/app_constant_web.dart';
 import 'package:digital_menu/controller/riverpod_management.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:html/dom.dart' as html_parser;
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_grid/responsive_grid.dart';
@@ -279,73 +277,6 @@ class _WebHomeState extends ConsumerState<WebHome>
                 ],
               ),
             ),
-
-            // SizedBox(
-            //   child: CarouselSlider(
-            //     options: CarouselOptions(
-            //       animateToClosest: true,
-            //       autoPlay: true,
-            //       autoPlayInterval: const Duration(seconds: 4),
-            //       enableInfiniteScroll: true,
-            //     ),
-            //     items: list
-            //         .map(
-            //           (item) => SizedBox(
-            //             child: Column(
-            //               mainAxisAlignment: MainAxisAlignment.center,
-            //               crossAxisAlignment: CrossAxisAlignment.center,
-            //               children: [
-            //                 Row(
-            //                   crossAxisAlignment: CrossAxisAlignment.center,
-            //                   mainAxisAlignment: MainAxisAlignment.center,
-            //                   children: [
-            //                     Column(
-            //                       children: [
-            //                         Text(
-            //                             "This cozy restaurent has left the best impressions! Hospitable hosts, delicious dished, beautiful presentation, wide wine list and wonderful dessert. I recommend to everyone! I would like to come back here again and again"),
-            //                         Text(
-            //                           html_parser.DocumentFragment.html(
-            //                                   "&#9733;")
-            //                               .text
-            //                               .toString(),
-            //                           style:
-            //                               const TextStyle(color: Colors.amber),
-            //                         ),
-            //                       ],
-            //                     ),
-            //                     Text(
-            //                       html_parser.DocumentFragment.html("&#9733;")
-            //                           .text
-            //                           .toString(),
-            //                       style: const TextStyle(color: Colors.amber),
-            //                     ),
-            //                     Text(
-            //                       html_parser.DocumentFragment.html("&#9733;")
-            //                           .text
-            //                           .toString(),
-            //                       style: const TextStyle(color: Colors.amber),
-            //                     ),
-            //                     Text(
-            //                       html_parser.DocumentFragment.html("&#9733;")
-            //                           .text
-            //                           .toString(),
-            //                       style: const TextStyle(color: Colors.amber),
-            //                     ),
-            //                     Text(
-            //                       html_parser.DocumentFragment.html("&#9733;")
-            //                           .text
-            //                           .toString(),
-            //                       style: const TextStyle(color: Colors.amber),
-            //                     ),
-            //                   ],
-            //                 )
-            //               ],
-            //             ),
-            //           ),
-            //         )
-            //         .toList(),
-            //   ),
-            // ),
           ],
         ),
       ),
@@ -492,7 +423,7 @@ class _WebHomeState extends ConsumerState<WebHome>
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         width: screenSize.width / 2,
                         child: Text(
                           'Traditional & Family Recipes',

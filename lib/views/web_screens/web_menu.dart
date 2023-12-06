@@ -10,7 +10,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:html/dom.dart' as html_parser;
 
 import '../../common/app_constants.dart';
-import '../../common/menu.dart';
+import '../../common/components/menu.dart';
 
 class WebMenu extends ConsumerStatefulWidget {
   const WebMenu({super.key});
@@ -25,19 +25,16 @@ class _WebMenuState extends ConsumerState<WebMenu> {
 
   Future<void> readJson() async {
     final String response = await rootBundle.loadString('assets/reviews.json');
-    print(response);
     final data = await json.decode(response);
 
     setState(() {
       reviews = data["reviews"];
     });
 
-// ...
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     readJson();
     super.initState();
   }
