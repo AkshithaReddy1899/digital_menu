@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../model/response_model.dart';
@@ -76,11 +75,16 @@ class AppConstant {
     );
   }
 
-  mobileAppBar(isDark) {
+  mobileAppBarWithLabel(isDark, label) {
     return AppBar(
-      backgroundColor: isDark ? AppConstant.darkBg : AppConstant.lightBg,
-      leading: BackButton(
+      iconTheme: IconThemeData(
           color: isDark ? AppConstant.darkAccent : AppConstant.lightAccent),
+      backgroundColor: isDark ? AppConstant.darkBg : AppConstant.lightBg,
+      title: Text(
+        label,
+        style: TextStyle(
+            color: isDark ? AppConstant.darkAccent : AppConstant.lightAccent),
+      ),
     );
   }
 
@@ -400,22 +404,22 @@ class AppConstant {
   }
 
   // REMOVE after implementing loading animation in past orders
-  loading(Size screenSize) {
-    return SizedBox(
-      width: screenSize.width,
-      height: screenSize.height / 2,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          LoadingAnimationWidget.beat(
-            color: AppConstant.darkBg,
-            size: screenSize.width / 6,
-          ),
-        ],
-      ),
-    );
-  }
+  // loading(Size screenSize) {
+  //   return SizedBox(
+  //     width: screenSize.width,
+  //     height: screenSize.height / 2,
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       crossAxisAlignment: CrossAxisAlignment.center,
+  //       children: [
+  //         LoadingAnimationWidget.beat(
+  //           color: AppConstant.darkBg,
+  //           size: screenSize.width / 6,
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   loadingShimmer(isDark) {
     return SizedBox(
@@ -489,8 +493,7 @@ class AppConstant {
                 ),
               ),
             ],
-          )
-          ),
+          )),
     );
   }
 
@@ -563,18 +566,15 @@ class AppConstant {
   }
 
   orderUpdate(context, bisUpdate, Param obj) async {
-    Response response =  await put(
-            Uri.parse(
-              "https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order/${obj.ordersId}"),
-            headers: {"content-type": "application/json"},
-            body: jsonEncode(obj),
-          );
-
-    print("https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order${obj.ordersId}");
-    print(obj.toJson());
+    Response response = await put(
+      Uri.parse(
+          "https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order/${obj.ordersId}"),
+      headers: {"content-type": "application/json"},
+      body: jsonEncode(obj),
+    );
 
     if (response.statusCode != 200) {
-      SnackBar snackBar = SnackBar(
+      SnackBar snackBar = const SnackBar(
           content: Text(
               'There was an error while changing the order status , please try again later'));
       if (!context.mounted) return;

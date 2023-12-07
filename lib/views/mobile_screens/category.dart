@@ -90,7 +90,7 @@ class _CRUDCategoryState extends ConsumerState<CRUDCategory> {
         child: Wrap(
           children: [
             Container(
-              color: isDark? AppConstant.darkBg : AppConstant.lightBg,
+              color: isDark ? AppConstant.darkBg : AppConstant.lightBg,
               padding: const EdgeInsets.all(20),
               child: Form(
                 key: _formKey,
@@ -221,7 +221,8 @@ class _CRUDCategoryState extends ConsumerState<CRUDCategory> {
     Size screenSize = MediaQuery.of(context).size;
     final themeProvider = ref.watch(themeRiverpod);
     return Scaffold(
-      appBar: AppConstant().mobileAppBar(themeProvider.darkMode),
+      appBar: AppConstant()
+          .mobileAppBarWithLabel(themeProvider.darkMode, 'Category'),
       body: SafeArea(
         child: Container(
           color: themeProvider.darkMode

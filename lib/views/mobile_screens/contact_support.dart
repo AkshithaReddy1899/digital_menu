@@ -18,7 +18,7 @@ class _ContactSupportState extends ConsumerState<ContactSupport> {
     Size screenSize = MediaQuery.of(context).size;
     final themeProvider = ref.watch(themeRiverpod);
     return Scaffold(
-      appBar: AppConstant().mobileAppBar(themeProvider.darkMode),
+      appBar: AppConstant().mobileAppBarWithLabel(themeProvider.darkMode, 'Support'),
       body: SafeArea(
           child: Container(
         color: themeProvider.darkMode

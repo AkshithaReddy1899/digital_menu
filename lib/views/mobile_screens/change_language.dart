@@ -48,21 +48,9 @@ class _ChangeLanguageState extends ConsumerState<ChangeLanguage> {
     final themeProvider = ref.watch(themeRiverpod);
     language = themeProvider.lan;
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: themeProvider.darkMode
-              ? AppConstant.darkAccent
-              : AppConstant.lightAccent,
-        ),
-        backgroundColor:
-            themeProvider.darkMode ? AppConstant.darkBg : AppConstant.lightBg,
-        title: Text(
-          AppLocalizations.of(context)!.pick,
-          style: TextStyle(
-              color: themeProvider.darkMode
-                  ? AppConstant.darkAccent
-                  : AppConstant.lightAccent),
-        ),
+      appBar: AppConstant().mobileAppBarWithLabel(
+        themeProvider.darkMode,
+        AppLocalizations.of(context)!.pick,
       ),
       body: SafeArea(
         child: Container(

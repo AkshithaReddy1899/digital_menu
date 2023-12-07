@@ -42,8 +42,6 @@ dependencies:
   http: ^0.13.0
   responsive_builder: ^0.7.0
   responsive_grid: ^2.4.4
-  rflutter_alert: ^2.0.7
-  loading_animation_widget: ^1.2.0+4
   loader_overlay: ^2.3.2
   carousel_slider: ^4.2.1
   html: ^0.15.4

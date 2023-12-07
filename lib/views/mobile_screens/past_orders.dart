@@ -29,11 +29,10 @@ class _PastOrdersState extends ConsumerState<PastOrders> {
       pastOrders.clear();
       loading = true;
     });
-    ResponseModel response = await AppConstant()
-        .getAll("https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order");
+    ResponseModel response = await AppConstant().getAll(
+        "https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order");
 
     orders = response.object!.orders!;
-
 
     setState(() {
       orders = response.object!.orders!;
@@ -45,15 +44,17 @@ class _PastOrdersState extends ConsumerState<PastOrders> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = ref.watch(themeRiverpod);
+    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Past Orders"),
-        backgroundColor:
-                themeProvider.darkMode ? AppConstant.darkBg1 : AppConstant.lightPrimary,
-      ),
+      appBar: AppConstant()
+          .mobileAppBarWithLabel(themeProvider.darkMode, "Past Orders"),
       body: SafeArea(
         child: Container(
-          color: themeProvider.darkMode ? AppConstant.darkBg : AppConstant.lightBg,
+            width: screenSize.width,
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            color: themeProvider.darkMode
+                ? AppConstant.darkBg
+                : AppConstant.lightBg,
             child: loading == false
                 ? pastOrders.isNotEmpty
                     ? ListView.builder(
@@ -70,12 +71,12 @@ class _PastOrdersState extends ConsumerState<PastOrders> {
                           Text(
                             'Something went wrong please try again later',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 16,
                             ),
                           ),
                         ],
                       )
-                : AppConstant().loading(MediaQuery.of(context).size)),
+                : AppConstant().loadingShimmer(themeProvider.darkMode)),
       ),
     );
   }

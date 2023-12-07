@@ -51,12 +51,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     ResponseModel response = await AppConstant().getAll(
         "https://willowy-creponne-213742.netlify.app/.netlify/functions/api/order");
 
-    if (response.object != null) {
-      orders = response.object!.orders!;
-      print(orders);
-    }
-    // print(response.object!.toJson());
-
     for (var i = 0; i < orders.length; i++) {
       for (var j = 0; j < orders[i].items!.length; j++) {
         if (orders[i].items![j].orderStatus == 'Placed') {
@@ -70,16 +64,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
       setState(() {
         if (response.object != null) {
           orders = response.object!.orders!;
-        }
-
-        for (var i = 0; i < orders.length; i++) {
-          print(orders[i].toJson());
-        }
-
-        print('@@@@@@@@@@@@@@@');
-
-        for (var i = 0; i < pendingOrders.length; i++) {
-          print(pendingOrders[i].toJson());
         }
 
         pendingOrders = pendingOrders;
@@ -124,7 +108,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                           Icon(
                             Icons.notifications,
                             size: 35,
-                            color: AppConstant.lightAccent,
+                            color: themeProvider.darkMode
+                                ? AppConstant.darkAccent
+                                : AppConstant.lightAccent,
                           ),
                         ],
                       ),
@@ -250,7 +236,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                                       );
                                     },
                                     Icons.settings,
-                                    'Contact Support',
+                                    'Support',
                                   ),
                                 ],
                               ),
@@ -355,6 +341,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                                           themeProvider.darkMode)
                                       : pendingOrders.isNotEmpty
                                           ? ListView.builder(
+                                              scrollDirection: Axis.vertical,
+                                              shrinkWrap: true,
                                               itemCount: pendingOrders.length,
                                               itemBuilder: (context, index) {
                                                 return AppConstant().ordersItem(
@@ -405,6 +393,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                                           themeProvider.darkMode)
                                       : currentOrders.isNotEmpty
                                           ? ListView.builder(
+                                              scrollDirection: Axis.vertical,
+                                              shrinkWrap: true,
                                               itemCount: currentOrders.length,
                                               itemBuilder: (context, index) {
                                                 return AppConstant().ordersItem(
