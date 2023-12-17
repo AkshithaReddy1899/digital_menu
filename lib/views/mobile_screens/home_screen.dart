@@ -66,6 +66,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
           orders = response.object!.orders!;
         }
 
+        for(var i = 0; i < pendingOrders.length; i++){
+          print(pendingOrders[i].toJson());
+        }
+
         pendingOrders = pendingOrders;
         currentOrders = currentOrders;
         servedOrders = servedOrders;
@@ -98,7 +102,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'logo',
+                            'Ruchulu',
                             style: AppConstant().logoTextStyle(
                               themeProvider.darkMode == true
                                   ? AppConstant.darkAccent
@@ -223,7 +227,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                                     themeProvider.darkMode
                                         ? Icons.dark_mode
                                         : Icons.sunny,
-                                    'Change theme',
+                                    'Theme',
                                   ),
                                   AppConstant().containerWithLabelComponent(
                                     themeProvider.darkMode,

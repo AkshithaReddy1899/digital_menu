@@ -45,6 +45,7 @@ class _HomeState extends ConsumerState<Home> {
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: L10n.all,
+      debugShowCheckedModeBanner: false,
       locale: Locale(themeProvider.lan),
       theme: ThemeData(
         textTheme: TextTheme(

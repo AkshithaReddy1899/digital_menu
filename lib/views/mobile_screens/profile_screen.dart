@@ -63,7 +63,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "logo@gmail.com",
+                  "Ruchulu@gmail.com",
                   style: AppConstant().logoTextStyle(
                     themeProvider.darkMode == true
                         ? AppConstant.lightPrimary
@@ -124,7 +124,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       children: [
                         AppConstant().appSideHeader(themeProvider.darkMode,
                             AppLocalizations.of(context)!.view_past_orders),
-                        const Icon(Icons.arrow_right)
+                        Icon(
+                          Icons.arrow_right,
+                          color: themeProvider.darkMode
+                              ? AppConstant.darkAccent
+                              : AppConstant.lightAccent,
+                        )
                       ],
                     ),
                   ),
@@ -170,10 +175,14 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            AppConstant().appSideHeader(
-                                themeProvider.darkMode,
+                            AppConstant().appSideHeader(themeProvider.darkMode,
                                 AppLocalizations.of(context)!.change_lan),
-                            const Icon(Icons.arrow_right),
+                            Icon(
+                              Icons.arrow_right,
+                              color: themeProvider.darkMode
+                                  ? AppConstant.darkAccent
+                                  : AppConstant.lightAccent,
+                            ),
                           ],
                         ),
                       ),
@@ -218,7 +227,12 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                           children: [
                             AppConstant().appSideHeader(themeProvider.darkMode,
                                 AppLocalizations.of(context)!.contact),
-                            const Icon(Icons.arrow_right)
+                            Icon(
+                              Icons.arrow_right,
+                              color: themeProvider.darkMode
+                                  ? AppConstant.darkAccent
+                                  : AppConstant.lightAccent,
+                            )
                           ],
                         ),
                       ),

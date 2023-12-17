@@ -209,23 +209,44 @@ class AppConstant {
     );
   }
 
-  showAlert(context, title, content, buttonText, [buttonYes, onpressed]) {
+  showAlert(context, isDark, title, content, buttonText,
+      [buttonYes, onpressed]) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text(title),
-          content: Text(content),
+          backgroundColor: isDark ? AppConstant.darkBg1 : AppConstant.lightBg1,
+          iconColor: isDark ? AppConstant.darkAccent : AppConstant.lightAccent,
+          title: Text(
+            title,
+            style: TextStyle(
+                color:
+                    isDark ? AppConstant.darkAccent : AppConstant.lightAccent),
+          ),
+          content: Text(
+            content,
+            style: TextStyle(
+                color:
+                    isDark ? AppConstant.darkAccent : AppConstant.lightAccent),
+          ),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text(buttonText),
+              child: Text(
+                buttonText,
+                style: const TextStyle(
+                  color: Color.fromARGB(255, 219, 114, 106),
+                ),
+              ),
             ),
             TextButton(
               onPressed: onpressed,
-              child: Text(buttonYes),
+              child: Text(
+                buttonYes,
+                style: const TextStyle(color: Colors.green),
+              ),
             ),
           ],
         );
@@ -252,7 +273,7 @@ class AppConstant {
         minHeight: 100,
         minWidth: double.infinity,
       ),
-      margin: const EdgeInsets.all(20),
+      margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -277,7 +298,7 @@ class AppConstant {
             height: 5,
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
@@ -304,14 +325,10 @@ class AppConstant {
           ),
           Row(
             children: [
-              Visibility(
-                visible: status == 'Placed',
-                child: elevatedButton(isDark, acceptOrder, 'Accept order'),
-              ),
-              Visibility(
-                visible: status == 'Accepted',
-                child: elevatedButton(isDark, servedOrder, 'Ready to serve'),
-              ),
+              elevatedButton(
+                  isDark,
+                  status == 'Placed' ? acceptOrder : servedOrder,
+                  status == 'Placed' ? 'Accept order' : 'Served'),
             ],
           )
         ],
@@ -319,108 +336,84 @@ class AppConstant {
     );
   }
 
-  ordersList(isDark, List<Orders> orders, index, visible) {
-    return Container(
-      constraints: const BoxConstraints(
-        minHeight: 100,
-        minWidth: double.infinity,
-      ),
-      margin: const EdgeInsets.all(20),
-      padding: const EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: isDark ? AppConstant.darkBg1 : AppConstant.lightBg1,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  ordersList(isDark, List<Orders> orders, visible) {
+    List<Param> pastOrders = [];
+    for (var i = 0; i < orders.length; i++) {
+      for (var j = 0; j < orders[i].items!.length; j++) {
+        if (orders[i].items![j].orderStatus == 'Served') {
+          pastOrders.add(orders[i].items![j]);
+        }
+      }
+    }
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: pastOrders.length,
+      itemBuilder: (context, i) {
+        return Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: isDark ? AppConstant.darkBg1 : AppConstant.lightBg1),
+          margin: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Order id: ${orders[index].ordersId}',
-                style: TextStyle(
-                    fontSize: 12,
-                    color: isDark
-                        ? AppConstant.darkAccent
-                        : AppConstant.lightAccent),
-              ),
-              Text(
-                'DateTime: ${orders[index].dateTime}',
-                style: TextStyle(
-                    fontSize: 12,
-                    color: isDark
-                        ? AppConstant.darkAccent
-                        : AppConstant.lightAccent),
-              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Order id: ${pastOrders[i].ordersId}',
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: isDark
+                            ? AppConstant.darkAccent
+                            : AppConstant.lightAccent),
+                  ),
+                  Text(
+                    'DateTime: 1700118350667',
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: isDark
+                            ? AppConstant.darkAccent
+                            : AppConstant.lightAccent),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        pastOrders[i].name.toString(),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: isDark
+                                ? AppConstant.darkSecondary
+                                : AppConstant.lightAccent),
+                      ),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      Text(
+                        'Portions: ${pastOrders[i].quantity}',
+                        style: TextStyle(
+                            fontSize: 10,
+                            color: isDark
+                                ? AppConstant.darkSecondary
+                                : AppConstant.lightAccent),
+                      ),
+                    ],
+                  )
+                ],
+              )
             ],
           ),
-          const SizedBox(
-            height: 5,
-          ),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: orders[index].items!.length,
-            itemBuilder: (context, i) {
-              return Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      orders[index].items![i].name.toString(),
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: isDark
-                              ? AppConstant.darkSecondary
-                              : AppConstant.lightAccent),
-                    ),
-                    const SizedBox(
-                      height: 2,
-                    ),
-                    Text(
-                      'Portions: ${orders[index].items![i].quantity}',
-                      style: TextStyle(
-                          fontSize: 10,
-                          color: isDark
-                              ? AppConstant.darkSecondary
-                              : AppConstant.lightAccent),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-          Visibility(
-            visible: visible,
-            child:
-                AppConstant().elevatedButton(isDark, () {}, 'Generate QR code'),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
-
-  // REMOVE after implementing loading animation in past orders
-  // loading(Size screenSize) {
-  //   return SizedBox(
-  //     width: screenSize.width,
-  //     height: screenSize.height / 2,
-  //     child: Column(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       crossAxisAlignment: CrossAxisAlignment.center,
-  //       children: [
-  //         LoadingAnimationWidget.beat(
-  //           color: AppConstant.darkBg,
-  //           size: screenSize.width / 6,
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
   loadingShimmer(isDark) {
     return SizedBox(
       child: Shimmer.fromColors(

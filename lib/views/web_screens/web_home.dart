@@ -176,7 +176,7 @@ class _WebHomeState extends ConsumerState<WebHome>
                                 themeProvider.darkMode),
                             WebConstants().constSpacing(20),
                             WebConstants().aboutSubHeading(
-                                "At logo, we thrive at creating the best Indian dish. With over 50 dishes to choose from, explore what our menu has to offer.",
+                                "At Ruchulu, we thrive at creating the best Indian dish. With over 50 dishes to choose from, explore what our menu has to offer.",
                                 themeProvider.darkMode),
                             WebConstants().constSpacing(20),
                             WebConstants().webButton('Explore Menu', () {

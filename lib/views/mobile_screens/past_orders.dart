@@ -14,7 +14,7 @@ class PastOrders extends ConsumerStatefulWidget {
 
 class _PastOrdersState extends ConsumerState<PastOrders> {
   List<Orders> orders = [];
-  List<Orders> pastOrders = [];
+  List<Param> pastOrders = [];
   bool loading = false;
 
   @override
@@ -34,6 +34,14 @@ class _PastOrdersState extends ConsumerState<PastOrders> {
 
     orders = response.object!.orders!;
 
+    for(var i = 0; i < orders.length; i++) {
+      for(var j = 0; j < orders[i].items!.length ; j++) {
+        if(orders[i].items![j].orderStatus == 'Served') {
+          pastOrders.add(orders[i].items![j]);
+        }
+      }
+    }
+
     setState(() {
       orders = response.object!.orders!;
       pastOrders = pastOrders;
@@ -51,19 +59,15 @@ class _PastOrdersState extends ConsumerState<PastOrders> {
       body: SafeArea(
         child: Container(
             width: screenSize.width,
+            height: screenSize.height,
             padding: const EdgeInsets.only(left: 20, right: 20),
             color: themeProvider.darkMode
                 ? AppConstant.darkBg
                 : AppConstant.lightBg,
             child: loading == false
-                ? pastOrders.isNotEmpty
-                    ? ListView.builder(
-                        itemCount: pastOrders.length,
-                        itemBuilder: (context, index) {
-                          return AppConstant().ordersList(
-                              themeProvider.darkMode, pastOrders, index, false);
-                        },
-                      )
+                ? orders.isNotEmpty
+                    ? AppConstant().ordersList(
+                              themeProvider.darkMode, orders, false)
                     : const Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,

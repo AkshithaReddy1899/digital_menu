@@ -139,6 +139,7 @@ class _CRUDCategoryState extends ConsumerState<CRUDCategory> {
                               if (!context.mounted) return;
                               AppConstant().showAlert(
                                   context,
+                                  isDark,
                                   'Error',
                                   "There was an error while ${bisUpdate ? "updating" : "adding"} the category, Please try again later :(",
                                   "OK");
@@ -154,6 +155,7 @@ class _CRUDCategoryState extends ConsumerState<CRUDCategory> {
                           if (_formKey.currentState!.validate()) {
                             AppConstant().showAlert(
                               context,
+                              isDark,
                               'Are you sure?',
                               "This action can't be undone",
                               'No',

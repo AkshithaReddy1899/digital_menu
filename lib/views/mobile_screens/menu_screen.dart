@@ -188,6 +188,7 @@ class _MenuScreenState extends ConsumerState<MenuScreen> {
                                   if (!context.mounted) return;
                                   AppConstant().showAlert(
                                       context,
+                                      isDark,
                                       'Error',
                                       "There was an error while ${bisUpdate ? "updating" : "adding"} the category, Please try again later :(",
                                       "OK");

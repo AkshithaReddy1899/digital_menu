@@ -85,7 +85,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                'logo',
+                'Ruchulu',
                 style: AppConstant().logoTextStyle(
                   themeProvider.darkMode == true
                       ? AppConstant.darkAccent

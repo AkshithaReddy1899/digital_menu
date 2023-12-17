@@ -231,6 +231,7 @@ class _MenuCardState extends ConsumerState<MenuCard> {
                             if (!context.mounted) return;
                             AppConstant().showAlert(
                                 context,
+                                isDark,
                                 'Error',
                                 "There was an error while ${bisUpdate ? "updating" : "adding"} the category, Please try again later :(",
                                 "OK");
@@ -244,6 +245,7 @@ class _MenuCardState extends ConsumerState<MenuCard> {
                         AppConstant().elevatedButton(isDark, () async {
                           AppConstant().showAlert(
                             context,
+                            isDark,
                             'Are you sure?',
                             "This action can't be undone",
                             'No',
@@ -453,7 +455,7 @@ class _MenuCardState extends ConsumerState<MenuCard> {
                                                             .lightAccent,
                                                   ),
                                                   AppConstant().commonText(
-                                                    "\$${product.price}",
+                                                    "₹${product.price}",
                                                     20.0,
                                                     FontWeight.w400,
                                                     kIsWeb
@@ -461,7 +463,7 @@ class _MenuCardState extends ConsumerState<MenuCard> {
                                                             ? AppConstant
                                                                 .darkSecondary
                                                             : AppConstant
-                                                                .lightPrimary
+                                                                .lightAccent
                                                         : themeProvider.darkMode
                                                             ? AppConstant
                                                                 .darkSecondary
